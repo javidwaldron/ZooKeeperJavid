@@ -20,45 +20,12 @@ namespace ZooKeeperJavid
     /// </summary>
     public partial class MainWindow : Window
     {
+       
 
         public MainWindow()
         {
             InitializeComponent();
             Game.SetUpGame();
-        }
-
-        /* Event handlers for buttons. Notice that these basically
- * pass on a request to the static Game class and get back
- * whether or not it succeeded. The success or failure in turn
- * controls whether or not the button stays enabled.
- * 
- * Technically this is not ideal, since the user has to click
- * the button once and have it fail BEFORE the button grays out.
- * Can you improve on this?
- */
-
-
-        /* In this simple version, each kind of animal has a custom click handler for being added to the holding pen if it comes from the "add" buttons, yet animals can be put back into the holding pen from the "zoo" grid without needing custom code for each animal type.
- * 
- * Can you make similar improvements to the XAML and backing code so that the animal-generating buttons (the "add" buttons)
- *
- */
-        private void Cat_Button_Clicked(object sender, MouseButtonEventArgs e)
-        {
-            Game.AddAnimalToHolding("cat");
-        }
-        private void Mouse_Button_Clicked(object sender, MouseButtonEventArgs e)
-        {
-            Game.AddAnimalToHolding("mouse");
-
-        }
-        private void Raptor_Button_Clicked(object sender, MouseButtonEventArgs e)
-        {
-            Game.AddAnimalToHolding("raptor");
-        }
-        private void Chick_Button_Clicked(object sender, MouseButtonEventArgs e)
-        {
-            Game.AddAnimalToHolding("chick");
         }
 
 
@@ -74,7 +41,7 @@ namespace ZooKeeperJavid
             {
                 Text = "?",
                 FontSize = 24,
-                Width = 50,
+                Width = 60,
                 Height = 50,
                 HorizontalAlignment = HorizontalAlignment.Center,
                 VerticalAlignment = VerticalAlignment.Center,
@@ -86,6 +53,72 @@ namespace ZooKeeperJavid
             Grid.SetRow(theButton, y);
             return theButton;
         }
+
+        private void HoldingPen1_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+            HoldingPen1.Background = Brushes.LightGray;
+            
+
+            if (Game.holdingPen.occupant != null)
+            {
+                Game.holderzone.occupant = Game.holdingPen.occupant;
+                
+               
+            }
+
+
+        }
+
+        private void HoldingPen2_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            HoldingPen2.Background = Brushes.LightGray;
+
+            if (Game.holdingPen2.occupant != null)
+            {
+                Game.holderzone.occupant = Game.holdingPen2.occupant;
+            }
+
+        }
+
+        private void HoldingPen3_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            HoldingPen3.Background = Brushes.LightGray;
+
+            if (Game.holdingPen3.occupant != null)
+            {
+                Game.holderzone.occupant = Game.holdingPen3.occupant;
+            }
+
+        }
+
+
+        //Same as zone click but for UI
+
+        private void ZooGrid_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+            if(Game.holderzone.occupant == null)
+            {
+                HoldingPen1.Background = Brushes.White;
+                HoldingPen2.Background = Brushes.White;
+                HoldingPen3.Background = Brushes.White;
+
+
+
+            }
+
+           
+                
+
+           
+
+
+        }
+
+
+
+
 
 
     }

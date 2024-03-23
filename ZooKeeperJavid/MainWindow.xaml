@@ -5,38 +5,54 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZooKeeperJavid"
         mc:Ignorable="d"
-        Title="MainWindow" Width="1200" Height="800">
-    <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
-        <StackPanel Orientation="Horizontal">
+        Title="ZooKeeper" Width="1200" Height="800">
+    <Window.Background>
+        <ImageBrush ImageSource="/Firefly Cartoon zoo animals on a grid 54160.jpg"/>
+    </Window.Background>
 
-        </StackPanel>
+
+
+    <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Center">
+        
+        <StackPanel Orientation="Horizontal"/>
+        <StackPanel Orientation="Horizontal"/>
+        
         <StackPanel Orientation="Horizontal">
-            <TextBlock FontSize="24" Text="Add Animal to Holding:" />
-            <Border BorderThickness="1" BorderBrush="Black">
-                <TextBlock x:Name="CatButton" FontSize="36" Text="🐱" Width="50" Height="50" MouseDown="Cat_Button_Clicked" />
-            </Border>
-            <Border BorderThickness="1" BorderBrush="Black">
-                <TextBlock x:Name="MouseButton" FontSize="36" Text="🐭" Width="50" Height="50" MouseDown="Mouse_Button_Clicked" />
-            </Border>
-            <Border BorderThickness="1" BorderBrush="Black">
-                <TextBlock x:Name="RaptorButton" FontSize="36" Text="🦅" Width="50" Height="50" MouseDown="Raptor_Button_Clicked" />
-            </Border>
-            <Border BorderThickness="1" BorderBrush="Black">
-                <TextBlock x:Name="ChickButton" FontSize="36" Text="🐥" Width="50" Height="50" MouseDown="Chick_Button_Clicked" />
-            </Border>
-        </StackPanel>
-        <StackPanel Orientation="Horizontal">
-            <TextBlock FontSize="24" Text="Holding Pen:" />
-            <Border x:Name="HoldingPen" BorderThickness="1" BorderBrush="Black" Width="50">
-                <TextBlock  FontSize="24" Text="" Width="50" Height="50" 
+            <TextBlock FontSize="24" Text="Swap Space:  " Foreground="White" Background="Black" />
+            <Border x:Name="HoldingPenA" BorderThickness="1" BorderBrush="Black" Width="50">
+                <TextBlock x:Name="HoldingPen1"  FontSize="24" Text="" Width="50" Height="50" 
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             TextAlignment="Center"
-                            MouseDown="Cat_Button_Clicked" />
+                            MouseDown="HoldingPen1_MouseDown" Background="White" />
+            </Border>
+            <Border x:Name="HoldingPenB" BorderThickness="1" BorderBrush="Black" Width="50">
+                <TextBlock x:Name="HoldingPen2"  FontSize="24" Text="" Width="50" Height="50" 
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            TextAlignment="Center"
+                            MouseDown="HoldingPen2_MouseDown" Background="White" />
+            </Border>
+            <Border x:Name="HoldingPenC" BorderThickness="1" BorderBrush="Black" Width="50">
+                <TextBlock x:Name="HoldingPen3"  FontSize="24" Text="" Width="50" Height="50" 
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            TextAlignment="Center"
+                            MouseDown="HoldingPen3_MouseDown" Background="White" />
+            </Border>
+            <Border x:Name="HoldingPenD" BorderThickness="1" BorderBrush="#FF43A23B" Width="50">
+                <TextBlock x:Name="holderzone"  FontSize="24" Text="" Width="50" Height="50" 
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                TextAlignment="Center"
+                />
             </Border>
         </StackPanel>
+        <TextBlock TextWrapping="Wrap" Text=""/>
+        <TextBlock TextWrapping="Wrap" Text=""/>
+        <StackPanel />
 
-        <Grid x:Name="ZooGrid">
+        <Grid x:Name="ZooGrid" Background="White" MouseDown="ZooGrid_MouseDown">
             <Grid.RowDefinitions>
                 <RowDefinition />
                 <RowDefinition />
@@ -62,6 +78,8 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
         </Grid>
+       
     </StackPanel>
+
 </Window>
 
