@@ -19,6 +19,11 @@ namespace ZooKeeperJavid
         static public int numCellsX = 6;
         static public int numCellsY = 6;
 
+
+        //These two variables created to mark when a space is filled and when all the grids are filled, this will trigger game over via amount.
+        static public int gameover = numCellsX * numCellsY;
+        static public int filledspaces = 0;
+
         static public List<List<Zone>> animalZones = new List<List<Zone>>();
         static public List<Animal> animals = new List<Animal>();
         static public List<Zone> holdingzones = new List<Zone>();
@@ -26,9 +31,15 @@ namespace ZooKeeperJavid
         static public Zone holdingPen2;
         static public Zone holdingPen3;
         static public Zone holderzone;
+        static public Zone swapzone;
+        static public Zone holderzone2;
 
         static public void SetUpGame()
         {
+
+
+
+            //Begins with jays code to create a grid based on numscells
 
             for (var y = 0; y < numCellsY; y++)
             {
@@ -46,69 +57,88 @@ namespace ZooKeeperJavid
             holdingPen3 = new Zone(-1, -3, null, ((MainWindow)Application.Current.MainWindow).HoldingPenC);
             holdingzones.Add(holdingPen3);
             holderzone = new Zone(-1, -4, null, ((MainWindow)Application.Current.MainWindow).HoldingPenD);
-            holdingzones.Add((holderzone));
+            holdingzones.Add(holderzone);
+            holderzone2 = new Zone(-1, -5, null, ((MainWindow)Application.Current.MainWindow).HoldingPenF);
+            holdingzones.Add(holderzone2);
 
+            //Custom method which generates a random animal into each holding pen zone
             AnimalRandomGenerator();
 
 
         }
 
-        
+
 
         static public void ZoneClick(Zone clickedZone)
         {
             
 
-            if (clickedZone.occupant == null && holderzone.occupant != null)
+
+            //Handles Holding Zone 2
+            // First if area clicked isnt empty or from swap space it gets stored in holding area 2
+            if (clickedZone.occupant != null && clickedZone.occupant != holdingPen.occupant && clickedZone.occupant != holdingPen2.occupant && clickedZone.occupant != holdingPen3.occupant)
             {
-                
-                clickedZone.occupant = holderzone.occupant;              
-                clickedZone.UpdateZoneImage();
+                holderzone2.occupant = clickedZone.occupant;
+                holderzone.occupant = null;
+               
                 ActivateAnimals();
                 UpdateBoard();
 
-                if (holderzone.occupant == holdingPen.occupant)
+            }
+            //Handles HolderZone and Game by Game Logic
+            if (clickedZone.occupant == null && holderzone.occupant != null)
+            {
+                filledspaces++;
+                clickedZone.occupant = holderzone.occupant;
+                holderzone.occupant = null;
+                ActivateAnimals();
+                UpdateBoard();
+
+                    if(clickedZone.occupant == holdingPen.occupant) 
                 {
                     holdingPen.occupant = null;
-                    holderzone.occupant = null;
-
-                    
                     AnimalRandomGenerator();
-                    holdingPen.UpdateZoneImage();
-
+                
                 }
-                if (holderzone.occupant == holdingPen2.occupant)
+                if (clickedZone.occupant == holdingPen2.occupant)
                 {
                     holdingPen2.occupant = null;
-                    holderzone.occupant = null;
                     AnimalRandomGenerator();
-                    holdingPen.UpdateZoneImage();
 
                 }
-                if (holderzone.occupant == holdingPen3.occupant)
+                if (clickedZone.occupant == holdingPen3.occupant)
                 {
                     holdingPen3.occupant = null;
-                    holderzone.occupant = null;
                     AnimalRandomGenerator();
-                    holdingPen.UpdateZoneImage();
 
                 }
-
-
             }
-           if(clickedZone.occupant != null && holderzone.occupant != null)
-            {
 
-                clickedZone.occupant = holderzone.occupant;
+            //If clicked zone occupat is empty but holderzne 2 is not
+            if(clickedZone.occupant == null && holderzone2.occupant != null)
+            {
+                clickedZone.occupant = holderzone2.occupant;
+                holderzone2.occupant = null;
+
+                ActivateAnimals();
+                UpdateBoard();
+            }
+            if(clickedZone.occupant != null && holderzone2.occupant != null)
+            {
+                holderzone2.occupant = clickedZone.occupant;
+                UpdateBoard();
+                ActivateAnimals() ;
             }
 
 
         }
+            //If clicked zone is swap space the nulls out both holder spaces
+            //This just makes it that once slected each swap space becomes null as soon as clicked . In main window as soon as these
+            //spaces are clicked, they become the holder zone animal
+            
 
-       
 
-
-        static public void ActivateAnimals()
+            static public void ActivateAnimals()
         {
             for (var r = 1; r < 11; r++) // reaction times from 1 to 10
             {

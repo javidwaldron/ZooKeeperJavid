@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,6 +30,10 @@ namespace ZooKeeperJavid
         }
 
 
+
+
+
+
         public Border MakeGridButton(int x, int y)
         {
             Border theButton = new Border
@@ -54,41 +59,67 @@ namespace ZooKeeperJavid
             return theButton;
         }
 
+
+        //Both UI and gameplay, essentially stores occupant into unrevealed category of holderzone
         private void HoldingPen1_MouseDown(object sender, MouseButtonEventArgs e)
         {
 
             HoldingPen1.Background = Brushes.LightGray;
+            HoldingPen2.Background = Brushes.White;
+            HoldingPen3.Background = Brushes.White;
+            swapzone.Text = Game.holdingPen.occupant.emoji;
+
             
 
             if (Game.holdingPen.occupant != null)
             {
+                swapzone.Text = Game.holdingPen.occupant.emoji;
+
                 Game.holderzone.occupant = Game.holdingPen.occupant;
+                Game.holderzone.UpdateZoneImage();
                 
                
             }
 
 
+            
         }
 
         private void HoldingPen2_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            HoldingPen1.Background = Brushes.White;
+            HoldingPen3.Background = Brushes.White;
             HoldingPen2.Background = Brushes.LightGray;
+            swapzone.Text = Game.holdingPen2.occupant.emoji;
 
             if (Game.holdingPen2.occupant != null)
             {
+                
+                swapzone.Text = Game.holdingPen2.occupant.emoji;
                 Game.holderzone.occupant = Game.holdingPen2.occupant;
+                Game.holderzone.UpdateZoneImage();
             }
+
+           
 
         }
 
         private void HoldingPen3_MouseDown(object sender, MouseButtonEventArgs e)
         {
+
+            HoldingPen1.Background = Brushes.White;
+            HoldingPen2.Background = Brushes.White;
             HoldingPen3.Background = Brushes.LightGray;
 
             if (Game.holdingPen3.occupant != null)
             {
+                swapzone.Text = Game.holdingPen3.occupant.emoji;
                 Game.holderzone.occupant = Game.holdingPen3.occupant;
+                Game.holderzone.UpdateZoneImage();
+
             }
+
+            
 
         }
 
@@ -98,29 +129,51 @@ namespace ZooKeeperJavid
         private void ZooGrid_MouseDown(object sender, MouseButtonEventArgs e)
         {
 
-            if(Game.holderzone.occupant == null)
+            
+            
+           
+            if (Game.holderzone.occupant == null)
             {
                 HoldingPen1.Background = Brushes.White;
                 HoldingPen2.Background = Brushes.White;
                 HoldingPen3.Background = Brushes.White;
 
+                swapzone.Text = "";
 
-
+                Debug.WriteLine(Game.filledspaces.ToString());
+            }
+            else if (Game.holderzone2.occupant != null)
+            {
+                swapzone.Text = Game.holderzone2.occupant.emoji;
+                
             }
 
-           
+            else if (Game.holderzone.occupant != null)
+            {
+                swapzone.Text = Game.holderzone.occupant.emoji;
                 
-
-           
-
+            }
+            
 
         }
+       
+    
+        
 
+            
 
-
-
-
-
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     }
 }
 
