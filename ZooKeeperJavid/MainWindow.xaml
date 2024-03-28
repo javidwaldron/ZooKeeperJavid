@@ -22,43 +22,43 @@
 
         <StackPanel Orientation="Horizontal">
             <TextBlock x:Name="SwapSpaceTitle" FontSize="24" Text="Swap Space:  " Foreground="White" Background="Black" />
-            <Border x:Name="HoldingPenA" BorderThickness="1" BorderBrush="Black" Width="50">
-                <TextBlock x:Name="HoldingPen1"  FontSize="24" Text="" Width="50" Height="50" 
+            <Border x:Name="HoldingPenA" BorderThickness="1" BorderBrush="Black" Width="80">
+                <TextBlock x:Name="HoldingPen1"  FontSize="24" Text="" Width="80" Height="50" 
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             TextAlignment="Center"
                             MouseDown="HoldingPen1_MouseDown" Background="White" />
             </Border>
-            <Border x:Name="HoldingPenB" BorderThickness="1" BorderBrush="Black" Width="50">
-                <TextBlock x:Name="HoldingPen2"  FontSize="24" Text="" Width="50" Height="50" 
+            <Border x:Name="HoldingPenB" BorderThickness="1" BorderBrush="Black" Width="80">
+                <TextBlock x:Name="HoldingPen2"  FontSize="24" Text="" Width="80" Height="50" 
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             TextAlignment="Center"
                             MouseDown="HoldingPen2_MouseDown" Background="White" />
             </Border>
-            <Border x:Name="HoldingPenC" BorderThickness="1" BorderBrush="Black" Width="50">
-                <TextBlock x:Name="HoldingPen3"  FontSize="24" Text="" Width="50" Height="50" 
+            <Border x:Name="HoldingPenC" BorderThickness="1" BorderBrush="Black" Width="80">
+                <TextBlock x:Name="HoldingPen3"  FontSize="24" Text="" Width="80" Height="50" 
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             TextAlignment="Center"
                             MouseDown="HoldingPen3_MouseDown" Background="White" />
             </Border>
-            <Border x:Name="HoldingPenD" BorderThickness="1" BorderBrush="#FF43A23B" Width="50" Visibility="Hidden">
-                <TextBlock x:Name="holderzone"  FontSize="24" Text="" Width="50" Height="50" 
+            <Border x:Name="HoldingPenD" BorderThickness="1" BorderBrush="#FF43A23B" Width="1" Visibility="Hidden">
+                <TextBlock x:Name="holderzone"  FontSize="24" Text="" Width="1" Height="50" 
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 TextAlignment="Center" Visibility="Hidden"
                 />
             </Border>
-            <Border x:Name="HoldingPenF" BorderThickness="1" BorderBrush="Black" Width="50" Visibility="Hidden">
-                <TextBlock x:Name="holderzone2"  FontSize="24" Text="" Width="50" Height="50" 
+            <Border x:Name="HoldingPenF" BorderThickness="1" BorderBrush="Black" Width="1" Visibility="Hidden">
+                <TextBlock x:Name="holderzone2"  FontSize="24" Text="" Width="1" Height="50" 
                  HorizontalAlignment="Center"
                  VerticalAlignment="Center"
                 TextAlignment="Center" Background="White" Visibility="Hidden"
                  />
             </Border>
-            <Border x:Name="HoldingPenG" BorderThickness="1" BorderBrush="Black" Width="50" Visibility="Hidden">
-                <TextBlock x:Name="holderzoneswap"  FontSize="24" Text="" Width="50" Height="50" 
+            <Border x:Name="HoldingPenG" BorderThickness="1" BorderBrush="Black" Width="1" Visibility="Hidden">
+                <TextBlock x:Name="holderzoneswap"  FontSize="24" Text="" Width="1" Height="50" 
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                  TextAlignment="Center" Background="White" Visibility="Hidden"
@@ -101,14 +101,14 @@
         <TextBlock FontSize="24" Text="" />
         <TextBlock x:Name="StoredTextSpace" FontSize="24" Text="Stored:  " Foreground="White" Background="Black" TextAlignment="Center" />
         <TextBlock FontSize="24" Text="" />
-        <Border x:Name="HoldingPenE" BorderThickness="1" Width="200" Height=" 200" Background="White">
+        <Border x:Name="HoldingPenE" BorderThickness="1" Width="200" Height=" 180" Background="White">
             <Border.BorderBrush>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="Black"/>
                     <GradientStop Color="Black" Offset="1"/>
                 </LinearGradientBrush>
             </Border.BorderBrush>
-            <TextBlock x:Name="swapzone"  FontSize="100" Text="" Width="180" Height="167" 
+            <TextBlock x:Name="swapzone"  FontSize="100" Text="" Width="200" Height="180" 
         HorizontalAlignment="Center"
         VerticalAlignment="Center"
         TextAlignment="Center"

@@ -46,7 +46,7 @@ namespace ZooKeeperJavid
             {
                 Text = "?",
                 FontSize = 24,
-                Width = 60,
+                Width = 80,
                 Height = 50,
                 HorizontalAlignment = HorizontalAlignment.Center,
                 VerticalAlignment = VerticalAlignment.Center,
@@ -73,7 +73,7 @@ namespace ZooKeeperJavid
 
             if (Game.holdingPen.occupant != null)
             {
-                swapzone.Text = Game.holdingPen.occupant.emoji;
+                swapzone.Text = Game.holdingPen.occupant.emoji + Game.holdingPen.occupant.reactionTime.ToString();
 
                 Game.holderzone.occupant = Game.holdingPen.occupant;
                 Game.holderzone2.occupant = null;
@@ -97,7 +97,7 @@ namespace ZooKeeperJavid
             if (Game.holdingPen2.occupant != null)
             {
                 
-                swapzone.Text = Game.holdingPen2.occupant.emoji;
+                swapzone.Text = Game.holdingPen2.occupant.emoji + Game.holdingPen2.occupant.reactionTime.ToString();
                 Game.holderzone.occupant = Game.holdingPen2.occupant;
                 Game.holderzone2.occupant = null;
                 Game.holderzone.UpdateZoneImage();
@@ -117,7 +117,7 @@ namespace ZooKeeperJavid
 
             if (Game.holdingPen3.occupant != null)
             {
-                swapzone.Text = Game.holdingPen3.occupant.emoji;
+                swapzone.Text = Game.holdingPen3.occupant.emoji + Game.holdingPen3.occupant.reactionTime.ToString();
                 Game.holderzone.occupant = Game.holdingPen3.occupant;
                 Game.holderzone2.occupant = null;
                 Game.holderzone.UpdateZoneImage();
@@ -148,12 +148,12 @@ namespace ZooKeeperJavid
             }
             if (Game.holderzone.occupant != null && Game.holderzone2.occupant == null)
             {
-                swapzone.Text = Game.holderzone.occupant.emoji;
+                swapzone.Text = Game.holderzone.occupant.emoji + Game.holderzone2.occupant.reactionTime.ToString();
 
             }
             if(Game.holderzone.occupant == null && Game.holderzone2.occupant != null)
             {
-                swapzone.Text = Game.holderzone2.occupant.emoji;
+                swapzone.Text = Game.holderzone2.occupant.emoji + Game.holderzone2.occupant.reactionTime.ToString();
 
             }
 
