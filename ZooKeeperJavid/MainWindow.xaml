@@ -43,7 +43,7 @@
                             TextAlignment="Center"
                             MouseDown="HoldingPen3_MouseDown" Background="White" />
             </Border>
-            <Border x:Name="HoldingPenD" BorderThickness="1" BorderBrush="#FF43A23B" Width="50" Visibility="Hidden">
+            <Border x:Name="HoldingPenD" BorderThickness="1" BorderBrush="#FF43A23B" Width="50">
                 <TextBlock x:Name="holderzone"  FontSize="24" Text="" Width="50" Height="50" 
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
@@ -55,7 +55,14 @@
                  HorizontalAlignment="Center"
                  VerticalAlignment="Center"
                 TextAlignment="Center" Background="White"
-     />
+                 />
+            </Border>
+            <Border x:Name="HoldingPenG" BorderThickness="1" BorderBrush="Black" Width="50">
+                <TextBlock x:Name="holderzoneswap"  FontSize="24" Text="" Width="50" Height="50" 
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                 TextAlignment="Center" Background="White"
+                    />
             </Border>
 
         </StackPanel>

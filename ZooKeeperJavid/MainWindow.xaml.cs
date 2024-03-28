@@ -76,9 +76,11 @@ namespace ZooKeeperJavid
                 swapzone.Text = Game.holdingPen.occupant.emoji;
 
                 Game.holderzone.occupant = Game.holdingPen.occupant;
+                Game.holderzone2.occupant = null;
                 Game.holderzone.UpdateZoneImage();
-                
-               
+                Game.holderzone2.UpdateZoneImage();
+
+
             }
 
 
@@ -97,7 +99,9 @@ namespace ZooKeeperJavid
                 
                 swapzone.Text = Game.holdingPen2.occupant.emoji;
                 Game.holderzone.occupant = Game.holdingPen2.occupant;
+                Game.holderzone2.occupant = null;
                 Game.holderzone.UpdateZoneImage();
+                Game.holderzone2.UpdateZoneImage();
             }
 
            
@@ -115,7 +119,9 @@ namespace ZooKeeperJavid
             {
                 swapzone.Text = Game.holdingPen3.occupant.emoji;
                 Game.holderzone.occupant = Game.holdingPen3.occupant;
+                Game.holderzone2.occupant = null;
                 Game.holderzone.UpdateZoneImage();
+                Game.holderzone2.UpdateZoneImage();
 
             }
 
@@ -130,7 +136,6 @@ namespace ZooKeeperJavid
         {
 
             
-            
            
             if (Game.holderzone.occupant == null)
             {
@@ -138,23 +143,15 @@ namespace ZooKeeperJavid
                 HoldingPen2.Background = Brushes.White;
                 HoldingPen3.Background = Brushes.White;
 
-                swapzone.Text = "";
-
-                Debug.WriteLine(Game.filledspaces.ToString());
-            }
-            else if (Game.holderzone2.occupant != null)
-            {
-                swapzone.Text = Game.holderzone2.occupant.emoji;
                 
             }
 
-            else if (Game.holderzone.occupant != null)
+            if (Game.holderzone2.occupant != null)
             {
-                swapzone.Text = Game.holderzone.occupant.emoji;
-                
+                Debug.WriteLine("" + Game.holderzone2.emoji.ToString() + Game.holderzone2.rtLabel.ToString()+ "");
             }
-            
-
+        
+        
         }
        
     
