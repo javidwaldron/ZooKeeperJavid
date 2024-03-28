@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +21,7 @@ namespace ZooKeeperJavid
     /// </summary>
     public partial class MainWindow : Window
     {
+       
 
         public MainWindow()
         {
@@ -27,39 +29,9 @@ namespace ZooKeeperJavid
             Game.SetUpGame();
         }
 
-        /* Event handlers for buttons. Notice that these basically
- * pass on a request to the static Game class and get back
- * whether or not it succeeded. The success or failure in turn
- * controls whether or not the button stays enabled.
- * 
- * Technically this is not ideal, since the user has to click
- * the button once and have it fail BEFORE the button grays out.
- * Can you improve on this?
- */
 
 
-        /* In this simple version, each kind of animal has a custom click handler for being added to the holding pen if it comes from the "add" buttons, yet animals can be put back into the holding pen from the "zoo" grid without needing custom code for each animal type.
- * 
- * Can you make similar improvements to the XAML and backing code so that the animal-generating buttons (the "add" buttons)
- *
- */
-        private void Cat_Button_Clicked(object sender, MouseButtonEventArgs e)
-        {
-            Game.AddAnimalToHolding("cat");
-        }
-        private void Mouse_Button_Clicked(object sender, MouseButtonEventArgs e)
-        {
-            Game.AddAnimalToHolding("mouse");
 
-        }
-        private void Raptor_Button_Clicked(object sender, MouseButtonEventArgs e)
-        {
-            Game.AddAnimalToHolding("raptor");
-        }
-        private void Chick_Button_Clicked(object sender, MouseButtonEventArgs e)
-        {
-            Game.AddAnimalToHolding("chick");
-        }
 
 
         public Border MakeGridButton(int x, int y)
@@ -74,7 +46,7 @@ namespace ZooKeeperJavid
             {
                 Text = "?",
                 FontSize = 24,
-                Width = 50,
+                Width = 80,
                 Height = 50,
                 HorizontalAlignment = HorizontalAlignment.Center,
                 VerticalAlignment = VerticalAlignment.Center,
@@ -88,6 +60,124 @@ namespace ZooKeeperJavid
         }
 
 
+        //Both UI and gameplay, essentially stores occupant into unrevealed category of holderzone
+        private void HoldingPen1_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+            HoldingPen1.Background = Brushes.LightGray;
+            HoldingPen2.Background = Brushes.White;
+            HoldingPen3.Background = Brushes.White;
+            swapzone.Text = Game.holdingPen.occupant.emoji;
+
+            
+
+            if (Game.holdingPen.occupant != null)
+            {
+                swapzone.Text = Game.holdingPen.occupant.emoji + Game.holdingPen.occupant.reactionTime.ToString();
+
+                Game.holderzone.occupant = Game.holdingPen.occupant;
+                Game.holderzone2.occupant = null;
+                Game.holderzone.UpdateZoneImage();
+                Game.holderzone2.UpdateZoneImage();
+
+
+            }
+
+
+            
+        }
+
+        private void HoldingPen2_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            HoldingPen1.Background = Brushes.White;
+            HoldingPen3.Background = Brushes.White;
+            HoldingPen2.Background = Brushes.LightGray;
+            swapzone.Text = Game.holdingPen2.occupant.emoji;
+
+            if (Game.holdingPen2.occupant != null)
+            {
+                
+                swapzone.Text = Game.holdingPen2.occupant.emoji + Game.holdingPen2.occupant.reactionTime.ToString();
+                Game.holderzone.occupant = Game.holdingPen2.occupant;
+                Game.holderzone2.occupant = null;
+                Game.holderzone.UpdateZoneImage();
+                Game.holderzone2.UpdateZoneImage();
+            }
+
+           
+
+        }
+
+        private void HoldingPen3_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+            HoldingPen1.Background = Brushes.White;
+            HoldingPen2.Background = Brushes.White;
+            HoldingPen3.Background = Brushes.LightGray;
+
+            if (Game.holdingPen3.occupant != null)
+            {
+                swapzone.Text = Game.holdingPen3.occupant.emoji + Game.holdingPen3.occupant.reactionTime.ToString();
+                Game.holderzone.occupant = Game.holdingPen3.occupant;
+                Game.holderzone2.occupant = null;
+                Game.holderzone.UpdateZoneImage();
+                Game.holderzone2.UpdateZoneImage();
+
+            }
+
+            
+
+        }
+
+
+        //Same as zone click but for UI
+
+        private void ZooGrid_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+            
+
+            if (Game.holderzone.occupant == null && Game.holderzone2.occupant == null)
+            {
+                HoldingPen1.Background = Brushes.White;
+                HoldingPen2.Background = Brushes.White;
+                HoldingPen3.Background = Brushes.White;
+
+                swapzone.Text = "";
+
+            }
+            if (Game.holderzone.occupant != null && Game.holderzone2.occupant == null)
+            {
+                swapzone.Text = Game.holderzone.occupant.emoji + Game.holderzone2.occupant.reactionTime.ToString();
+
+            }
+            if(Game.holderzone.occupant == null && Game.holderzone2.occupant != null)
+            {
+                swapzone.Text = Game.holderzone2.occupant.emoji + Game.holderzone2.occupant.reactionTime.ToString();
+
+            }
+
+
+
+        }
+       
+    
+        
+
+            
+
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     }
 }
 
