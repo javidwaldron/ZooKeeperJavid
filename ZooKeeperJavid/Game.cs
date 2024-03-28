@@ -36,6 +36,7 @@ namespace ZooKeeperJavid
         static public Zone holderzone;
         static public Zone swapzone;
         static public Zone holderzone2;
+        static public Zone holderzoneswap;
 
         static public bool tobeswapped = false;
         
@@ -66,6 +67,8 @@ namespace ZooKeeperJavid
             holdingzones.Add(holderzone);
             holderzone2 = new Zone(-1, -5, null, ((MainWindow)Application.Current.MainWindow).HoldingPenF);
             holdingzones.Add(holderzone2);
+            holderzoneswap = new Zone(-1, -6, null, ((MainWindow)Application.Current.MainWindow).HoldingPenG);
+            holdingzones.Add(holderzoneswap);
 
             //Custom method which generates a random animal into each holding pen zone
             AnimalRandomGenerator();
@@ -77,16 +80,17 @@ namespace ZooKeeperJavid
 
         static public void ZoneClick(Zone clickedZone)
         {
-           
+            Console.WriteLine("This is how many filled spaces there are:" + filledspaces.ToString() + "");
 
             //Split this down by either its empty or not
             if (clickedZone.occupant == null)
             {
-               
+
                 //If its empty but the holding area I have for adding new animals isnt, adds animals and emptys hold zone
-                if(holderzone.occupant != null)
+                if (holderzone.occupant != null)
                 {
-                    clickedZone.occupant = holderzone.occupant;                
+                    ++filledspaces;
+                    clickedZone.occupant = holderzone.occupant;
                     holderzone.occupant = null;
                     holderzone.UpdateZoneImage();
                     UpdateBoard();
@@ -115,7 +119,7 @@ namespace ZooKeeperJavid
                 }
 
                 //If the second holding zone isnt empty but space clicking is, drops animal there
-                if(holderzone2.occupant!= null)
+                if (holderzone2.occupant != null && tobeswapped == true)
                 {
                     clickedZone.occupant = holderzone2.occupant;
                     holderzone2.occupant = null;
@@ -124,20 +128,28 @@ namespace ZooKeeperJavid
                     UpdateBoard();
                     ActivateAnimals();
                     tobeswapped = false;
-                   
+
                     animalZones[clicky][clickx].occupant = null;
                     animalZones[clicky][clickx].UpdateZoneImage();
                 }
+                if (holderzone2.occupant != null && tobeswapped == false)
+                {
+                    clickedZone.occupant = holderzone2.occupant;
+                    holderzone2.occupant = null;
+                    clickedZone.UpdateZoneImage();
+                    holderzone2.UpdateZoneImage();
+                    UpdateBoard();
+                    ActivateAnimals();
 
 
-
+                }
             }
+
             //Part two of the original split, its either empty or its not/ and not equal to the swap pens for good measure
-            else if(clickedZone.occupant != null && clickedZone.occupant != holdingPen.occupant && clickedZone.occupant != holdingPen2.occupant && clickedZone.occupant != holdingPen3.occupant)
+            else if (clickedZone.occupant != null && clickedZone != holdingPen && clickedZone != holdingPen2 && clickedZone != holdingPen3)
             {
                 clickedZone.occupant.ReportLocation();
-                clickx = clickedZone.location.x;
-                clicky = clickedZone.location.y;
+                
 
 
                 //if you click and its not empty, turns on trigger and saves click zone to holderzone 2
@@ -146,7 +158,8 @@ namespace ZooKeeperJavid
 
                     holderzone2.occupant = clickedZone.occupant;
                     holderzone2.UpdateZoneImage();
-                    
+                    clickx = clickedZone.location.x;
+                    clicky = clickedZone.location.y;
 
                     Debug.WriteLine("" + clickx.ToString() + "");
                     Debug.WriteLine("" + clicky.ToString() + "");
@@ -154,22 +167,29 @@ namespace ZooKeeperJavid
                     tobeswapped = true;
 
                 }
-                 //if you click and its not empty and you have something saved in holderzone 2
-                else if(holderzone2.occupant != null)
+                //if you click and its not empty and you have something saved in holderzone 2
+                else if (holderzone2.occupant != null)
                 {
+                    animalZones[clicky][clickx].occupant = null;
+                    animalZones[clicky][clickx].UpdateZoneImage();
 
-                        
-                    
-                        clickedZone.occupant = holderzone2.occupant;
-                        holderzone2.occupant = null;
-                        holderzone2.UpdateZoneImage();
-                        clickedZone.UpdateZoneImage();
-                        tobeswapped= false;
+                    holderzoneswap.occupant = clickedZone.occupant;
+                    clickedZone.occupant = holderzone2.occupant;
+                    holderzone2.occupant = holderzoneswap.occupant;
+                    holderzoneswap.occupant = null;
 
-                        
+                    holderzone2.UpdateZoneImage();
+                    clickedZone.UpdateZoneImage();
+
+                    clickx = 0;
+                    clicky = 0;
+
+                    tobeswapped = false;
+
+
 
                 }
-                    
+
 
 
 

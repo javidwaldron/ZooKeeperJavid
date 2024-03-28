@@ -43,25 +43,25 @@
                             TextAlignment="Center"
                             MouseDown="HoldingPen3_MouseDown" Background="White" />
             </Border>
-            <Border x:Name="HoldingPenD" BorderThickness="1" BorderBrush="#FF43A23B" Width="50">
+            <Border x:Name="HoldingPenD" BorderThickness="1" BorderBrush="#FF43A23B" Width="50" Visibility="Hidden">
                 <TextBlock x:Name="holderzone"  FontSize="24" Text="" Width="50" Height="50" 
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
-                TextAlignment="Center"
+                TextAlignment="Center" Visibility="Hidden"
                 />
             </Border>
-            <Border x:Name="HoldingPenF" BorderThickness="1" BorderBrush="Black" Width="50">
+            <Border x:Name="HoldingPenF" BorderThickness="1" BorderBrush="Black" Width="50" Visibility="Hidden">
                 <TextBlock x:Name="holderzone2"  FontSize="24" Text="" Width="50" Height="50" 
                  HorizontalAlignment="Center"
                  VerticalAlignment="Center"
-                TextAlignment="Center" Background="White"
+                TextAlignment="Center" Background="White" Visibility="Hidden"
                  />
             </Border>
-            <Border x:Name="HoldingPenG" BorderThickness="1" BorderBrush="Black" Width="50">
+            <Border x:Name="HoldingPenG" BorderThickness="1" BorderBrush="Black" Width="50" Visibility="Hidden">
                 <TextBlock x:Name="holderzoneswap"  FontSize="24" Text="" Width="50" Height="50" 
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
-                 TextAlignment="Center" Background="White"
+                 TextAlignment="Center" Background="White" Visibility="Hidden"
                     />
             </Border>
 

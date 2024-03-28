@@ -136,22 +136,29 @@ namespace ZooKeeperJavid
         {
 
             
-           
-            if (Game.holderzone.occupant == null)
+
+            if (Game.holderzone.occupant == null && Game.holderzone2.occupant == null)
             {
                 HoldingPen1.Background = Brushes.White;
                 HoldingPen2.Background = Brushes.White;
                 HoldingPen3.Background = Brushes.White;
 
-                
+                swapzone.Text = "";
+
+            }
+            if (Game.holderzone.occupant != null && Game.holderzone2.occupant == null)
+            {
+                swapzone.Text = Game.holderzone.occupant.emoji;
+
+            }
+            if(Game.holderzone.occupant == null && Game.holderzone2.occupant != null)
+            {
+                swapzone.Text = Game.holderzone2.occupant.emoji;
+
             }
 
-            if (Game.holderzone2.occupant != null)
-            {
-                Debug.WriteLine("" + Game.holderzone2.emoji.ToString() + Game.holderzone2.rtLabel.ToString()+ "");
-            }
-        
-        
+
+
         }
        
     
