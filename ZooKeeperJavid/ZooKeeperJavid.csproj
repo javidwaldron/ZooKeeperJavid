@@ -57,7 +57,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Bird.cs" />
+    <Compile Include="Bunny.cs" />
     <Compile Include="Cat.cs" />
+    <Compile Include="Elephant.cs" />
     <Compile Include="Mouse.cs" />
     <Compile Include="Point.cs" />
     <Compile Include="Raptor.cs" />

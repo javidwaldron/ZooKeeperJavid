@@ -6,28 +6,28 @@ using System.Threading.Tasks;
 
 namespace ZooKeeperJavid
 {
-    public class Chick : Bird, Animal.IPrey
+    public class Bunny : Animal , Animal.IPrey
     {
-        public Chick(string name)
+
+        public Bunny(string name) 
         {
-            emoji = "🐥";
-            species = "chick";
+            emoji = "🐇";
+            species = "bunny";
             this.name = name;
-            reactionTime = new Random().Next(6, 11);
+            reactionTime = new Random().Next(1, 10);
+
 
         }
 
         public override void Activate()
         {
             base.Activate();
-            Console.WriteLine("I am a chick. Cheep.");
-
-            string predatorAnimal = "cat";
+            Console.WriteLine("I am a bunny.You ever see watership down?");
+            string predatorAnimal = "raptor";
             string predatorAnimal2 = null;
 
             Flee(predatorAnimal, predatorAnimal2);
         }
-
 
 
 

@@ -118,6 +118,86 @@ namespace ZooKeeperJavid
 
         }
 
+        // A combination of flee and hunt, I think answers the question to the best of my ability. If statement prioritizes raptor flee movements before hunt movements
+        public void CatsAreSoFnWeird(string targetAnimal, string targetAnimal2, string predatorAnimal)
+        {
+
+            if (Game.Seek(location.x, location.y, Direction.up, predatorAnimal))
+            {
+                if (Game.Retreat(this, Direction.down)) return;
+            }
+            if (Game.Seek(location.x, location.y, Direction.up, targetAnimal))
+            {
+                Game.Attack(this, Direction.up);
+                Game.filledspaces--;
+            }
+            if (Game.Seek(location.x, location.y, Direction.up, targetAnimal2))
+            {
+                Game.Attack(this, Direction.up);
+                Game.filledspaces--;
+            }
+            if (Game.Seek(location.x, location.y, Direction.down, predatorAnimal))
+            {
+                if (Game.Retreat(this, Direction.up)) return;
+            }
+            if (Game.Seek(location.x, location.y, Direction.down, targetAnimal))
+            {
+                Game.Attack(this, Direction.down);
+                Game.filledspaces--;
+            }
+            if (Game.Seek(location.x, location.y, Direction.down, targetAnimal2))
+            {
+                Game.Attack(this, Direction.down);
+                Game.filledspaces--;
+            }
+            if (Game.Seek(location.x, location.y, Direction.left, predatorAnimal))
+            {
+                if (Game.Retreat(this, Direction.right)) return;
+            }
+            if (Game.Seek(location.x, location.y, Direction.left, targetAnimal))
+            {
+                Game.Attack(this, Direction.left);
+                Game.filledspaces--;
+            }
+            if (Game.Seek(location.x, location.y, Direction.left, targetAnimal2))
+            {
+                Game.Attack(this, Direction.left);
+                Game.filledspaces--;
+            }
+            if (Game.Seek(location.x, location.y, Direction.right, predatorAnimal))
+            {
+                if (Game.Retreat(this, Direction.left)) return;
+            }
+            if (Game.Seek(location.x, location.y, Direction.right, targetAnimal))
+            {
+                Game.Attack(this, Direction.right);
+                Game.filledspaces--;
+            }
+
+
         }
+
+
+        // Did not stipulate on interface because game solving took so long, bare bones answer to prove I know how it works, sorry
+        public interface IPrey
+        {
+            void Flee(string predatorAnimal, string predatorAnimal2);
+        }
+
+        public interface IPredator
+        {
+            void Hunt(string targetAnimal, string targetAnimal2);
+            
+        }
+        public interface ICat
+        {
+            void CatsAreSoFnWeird(string targetAnimal, string targetAnimal2, string predatorAnimal);
+
+
+        }
+
+
+
+    }
 
     }

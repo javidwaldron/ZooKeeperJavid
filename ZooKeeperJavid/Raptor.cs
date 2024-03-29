@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ZooKeeperJavid
 {
-    public class Raptor : Bird
+    public class Raptor : Bird, Animal.IPredator
     {
         public Raptor(string name)
         {

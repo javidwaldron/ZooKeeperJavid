@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ZooKeeperJavid
 {
-    public class Cat : Animal
+    public class Cat : Animal, Animal.ICat
     {
         public Cat(string name)
         {
@@ -29,64 +29,9 @@ namespace ZooKeeperJavid
             CatsAreSoFnWeird(targetAnimal, targetAnimal2, predatorAnimal);
         }
 
-        // A combination of flee and hunt, I think answers question e to the best of my ability. If statement prioritizes raptor flee movements before hunt movements
+        
 
-        public void CatsAreSoFnWeird(string targetAnimal, string targetAnimal2, string predatorAnimal)
-        {
-
-            if (Game.Seek(location.x, location.y, Direction.up, predatorAnimal))
-            {
-                if (Game.Retreat(this, Direction.down)) return;
-            }
-            if (Game.Seek(location.x, location.y, Direction.up, targetAnimal))
-            {
-                Game.Attack(this, Direction.up);
-                Game.filledspaces--;
-            }
-            if (Game.Seek(location.x, location.y, Direction.up, targetAnimal2))
-            {
-                Game.Attack(this, Direction.up);
-                Game.filledspaces--;
-            }
-            if (Game.Seek(location.x, location.y, Direction.down, predatorAnimal))
-            {
-                if (Game.Retreat(this, Direction.up)) return;
-            }
-            if (Game.Seek(location.x, location.y, Direction.down, targetAnimal))
-            {
-                Game.Attack(this, Direction.down);
-                Game.filledspaces--;
-            }
-            if (Game.Seek(location.x, location.y, Direction.down, targetAnimal2))
-            {
-                Game.Attack(this, Direction.down);
-                Game.filledspaces--;
-            }
-            if (Game.Seek(location.x, location.y, Direction.left, predatorAnimal))
-            {
-                if (Game.Retreat(this, Direction.right)) return;
-            }
-            if (Game.Seek(location.x, location.y, Direction.left, targetAnimal))
-            {
-                Game.Attack(this, Direction.left);
-                Game.filledspaces--;
-            }
-            if (Game.Seek(location.x, location.y, Direction.left, targetAnimal2))
-            {
-                Game.Attack(this, Direction.left);
-                Game.filledspaces--;
-            }
-            if (Game.Seek(location.x, location.y, Direction.right, predatorAnimal))
-            {
-                if (Game.Retreat(this, Direction.left)) return;
-            }
-            if (Game.Seek(location.x, location.y, Direction.right, targetAnimal))
-            {
-                Game.Attack(this, Direction.right);
-            }
-
-
-        }
+       
 
     }
 }

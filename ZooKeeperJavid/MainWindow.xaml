@@ -108,7 +108,7 @@
                     <GradientStop Color="Black" Offset="1"/>
                 </LinearGradientBrush>
             </Border.BorderBrush>
-            <TextBlock x:Name="swapzone"  FontSize="100" Text="" Width="200" Height="180" 
+            <TextBlock x:Name="swapzone"  FontSize="80" Text="" Width="200" Height="180" 
         HorizontalAlignment="Center"
         VerticalAlignment="Center"
         TextAlignment="Center"
@@ -118,7 +118,9 @@
 
 
 
+
     </StackPanel>
+    
 
 
 </Window>

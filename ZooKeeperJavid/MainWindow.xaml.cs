@@ -29,7 +29,7 @@ namespace ZooKeeperJavid
             Game.SetUpGame();
         }
 
-
+      
 
 
 
@@ -148,7 +148,7 @@ namespace ZooKeeperJavid
             }
             if (Game.holderzone.occupant != null && Game.holderzone2.occupant == null)
             {
-                swapzone.Text = Game.holderzone.occupant.emoji + Game.holderzone2.occupant.reactionTime.ToString();
+                swapzone.Text = Game.holderzone.occupant.emoji + Game.holderzone.occupant.reactionTime.ToString();
 
             }
             if(Game.holderzone.occupant == null && Game.holderzone2.occupant != null)
@@ -156,7 +156,18 @@ namespace ZooKeeperJavid
                 swapzone.Text = Game.holderzone2.occupant.emoji + Game.holderzone2.occupant.reactionTime.ToString();
 
             }
-
+         
+            else
+            {
+                swapzone.Text = "";
+                
+                if (Game.filledspaces == Game.gameover)
+                {
+                    StoredTextSpace.Text = "YOU WIN!";
+                    swapzone.Text = "🏆";
+                    Game.gameEnd = true;
+                }
+            }
 
 
         }

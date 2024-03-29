@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ZooKeeperJavid
 {
-    public class Mouse : Animal
+    public class Mouse : Animal, Animal.IPrey
     {
         public Mouse(string name)
         {
