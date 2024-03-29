@@ -37,42 +37,42 @@ namespace ZooKeeperJavid
             if (Game.Seek(location.x, location.y, Direction.up, targetAnimal))
             {
                 Game.Attack(this, Direction.up);
-                Game.filledspaces--;
+                
             }
             if (Game.Seek(location.x, location.y, Direction.down, targetAnimal))
             {
                 Game.Attack(this, Direction.down);
-                Game.filledspaces--;
+                
             }
             if (Game.Seek(location.x, location.y, Direction.left, targetAnimal))
             {
                 Game.Attack(this, Direction.left);
-                Game.filledspaces--;
+                
             }
             if (Game.Seek(location.x, location.y, Direction.right, targetAnimal))
             {
                 Game.Attack(this, Direction.right);
-                Game.filledspaces--;
+                
             }
             if (Game.Seek(location.x, location.y, Direction.up, targetAnimal2))
             {
                 Game.Attack(this, Direction.up);
-                Game.filledspaces--;
+                
             }
             if (Game.Seek(location.x, location.y, Direction.down, targetAnimal2))
             {
                 Game.Attack(this, Direction.down);
-                Game.filledspaces--;
+                
             }
             if (Game.Seek(location.x, location.y, Direction.left, targetAnimal2))
             {
                 Game.Attack(this, Direction.left);
-                Game.filledspaces--;
+                
             }
             if (Game.Seek(location.x, location.y, Direction.right, targetAnimal2))
             {
                 Game.Attack(this, Direction.right);
-                Game.filledspaces--;
+                
             }
 
         }
@@ -129,12 +129,12 @@ namespace ZooKeeperJavid
             if (Game.Seek(location.x, location.y, Direction.up, targetAnimal))
             {
                 Game.Attack(this, Direction.up);
-                Game.filledspaces--;
+                
             }
             if (Game.Seek(location.x, location.y, Direction.up, targetAnimal2))
             {
                 Game.Attack(this, Direction.up);
-                Game.filledspaces--;
+                
             }
             if (Game.Seek(location.x, location.y, Direction.down, predatorAnimal))
             {
@@ -143,12 +143,12 @@ namespace ZooKeeperJavid
             if (Game.Seek(location.x, location.y, Direction.down, targetAnimal))
             {
                 Game.Attack(this, Direction.down);
-                Game.filledspaces--;
+                
             }
             if (Game.Seek(location.x, location.y, Direction.down, targetAnimal2))
             {
                 Game.Attack(this, Direction.down);
-                Game.filledspaces--;
+                
             }
             if (Game.Seek(location.x, location.y, Direction.left, predatorAnimal))
             {
@@ -157,12 +157,12 @@ namespace ZooKeeperJavid
             if (Game.Seek(location.x, location.y, Direction.left, targetAnimal))
             {
                 Game.Attack(this, Direction.left);
-                Game.filledspaces--;
+                
             }
             if (Game.Seek(location.x, location.y, Direction.left, targetAnimal2))
             {
                 Game.Attack(this, Direction.left);
-                Game.filledspaces--;
+                
             }
             if (Game.Seek(location.x, location.y, Direction.right, predatorAnimal))
             {
@@ -171,7 +171,7 @@ namespace ZooKeeperJavid
             if (Game.Seek(location.x, location.y, Direction.right, targetAnimal))
             {
                 Game.Attack(this, Direction.right);
-                Game.filledspaces--;
+                
             }
 
 

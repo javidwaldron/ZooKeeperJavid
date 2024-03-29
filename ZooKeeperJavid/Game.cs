@@ -83,7 +83,7 @@ namespace ZooKeeperJavid
         static public void ZoneClick(Zone clickedZone)
         {
             
-            Console.WriteLine("This is how many filled spaces there are:" + filledspaces.ToString() + "");
+           
 
                 //Split this down by either its empty or not
                 if (clickedZone.occupant == null)
@@ -93,6 +93,8 @@ namespace ZooKeeperJavid
                     if (holderzone.occupant != null)
                     {
                         ++filledspaces;
+                        Console.WriteLine("This is how many filled spaces there are:" + filledspaces.ToString() + "");
+                        IsThisisOver();
                         clickedZone.occupant = holderzone.occupant;
                         holderzone.occupant = null;
                         holderzone.UpdateZoneImage();
@@ -276,6 +278,7 @@ namespace ZooKeeperJavid
                     break;
             }
             animalZones[y][x].occupant = null;
+            filledspaces--;
         }
 
 
@@ -386,7 +389,16 @@ namespace ZooKeeperJavid
 
         }
         
+        // Checks for end game as a method boolean results in Main Window 
+        static public void IsThisisOver()
+        {
 
+            if(filledspaces == gameover)
+            {
+                gameEnd = true;
+            }
+
+        }
        
     
     

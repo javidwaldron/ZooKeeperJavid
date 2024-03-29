@@ -161,11 +161,11 @@ namespace ZooKeeperJavid
             {
                 swapzone.Text = "";
                 
-                if (Game.filledspaces == Game.gameover)
+                if (Game.gameEnd == true)
                 {
                     StoredTextSpace.Text = "YOU WIN!";
                     swapzone.Text = "🏆";
-                    Game.gameEnd = true;
+                    
                 }
             }
 
